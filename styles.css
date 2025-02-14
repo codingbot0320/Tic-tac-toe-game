@@ -1,0 +1,212 @@
+/* styles.css */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #85daf6, #fad0c4);
+    overflow: hidden;
+    position: relative;
+    animation: backgroundColorChange 30s infinite alternate;
+  }
+  
+  @keyframes backgroundColorChange {
+    0% {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }
+    10% {
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    }
+    20% {
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    }
+    30% {
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    }
+    40% {
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    }
+    50% {
+      background: linear-gradient(135deg, #fad0c4, #ffd1ff);
+    }
+    60% {
+      background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+    }
+    70% {
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    }
+    80% {
+      background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+    }
+    90% {
+      background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+    }
+    100% {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }
+  }
+  
+  .title-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 34px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #000000;
+    z-index: 2;
+  }
+  
+  .footer-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #000000;
+    z-index: 2;
+  }
+  
+  #game {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  #board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .cell:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+  
+  .cell.x::after {
+    content: 'X';
+    color: #ff6347;
+    font-size: 2em;
+    animation: pop-in 0.3s;
+  }
+  
+  .cell.o::after {
+    content: 'O';
+    color: #4682b4;
+    font-size: 2em;
+    animation: pop-in 0.3s;
+  }
+  
+  @keyframes pop-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  #status {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  #restart {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #a7b6ff;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  #restart:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  @keyframes move-bg {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .background-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 75%);
+    animation: move-bg 20s linear infinite;
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff6347;
+    animation: fall 2s linear infinite;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes confetti-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
